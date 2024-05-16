@@ -23,15 +23,8 @@ app.get('/', (req, res) => {
     res.send('Express + TypeScript Server');
 });
 app.get('/user', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        // Fetch user data from the database
-        const users = yield prisma.user.findMany();
-        res.json(users);
-    }
-    catch (error) {
-        console.error('Error fetching users:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
+    const user = { id: 1, name: 'Alice' };
+    res.send(user);
 }));
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);

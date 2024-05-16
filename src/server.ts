@@ -1,6 +1,6 @@
-import express, { Request, Response } from 'express';
+import express, {Request, Response} from 'express';
 import dotenv from 'dotenv';
-import { PrismaClient } from '@prisma/client';
+import {PrismaClient, User} from '@prisma/client';
 
 dotenv.config();
 
@@ -13,14 +13,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/user', async (req: Request, res: Response) => {
-    try {
-        // Fetch user data from the database
-        const users = await prisma.user.findMany();
-        res.json(users);
-    } catch (error) {
-        console.error('Error fetching users:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
+
+    const user: User = {id: 1, name: 'Alice'};
+    res.send(user);
 });
 
 app.listen(port, () => {
